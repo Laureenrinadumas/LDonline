@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FollowMe{% endblock %}
+
+{% block body %}
+    <h1>Create new FollowMe</h1>
+
+    {{ include('follow_me/_form.html.twig') }}
+
+    <a href="{{ path('follow_me_index') }}">back to list</a>
+{% endblock %}

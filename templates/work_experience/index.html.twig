@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WorkExperience index{% endblock %}
+
+{% block body %}
+    <h1>WorkExperience index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>City</th>
+                <th>Date</th>
+                <th>Abstract</th>
+                <th>TechnicalEnvironment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for work_experience in work_experiences %}
+            <tr>
+                <td>{{ work_experience.id }}</td>
+                <td>{{ work_experience.Title }}</td>
+                <td>{{ work_experience.city }}</td>
+                <td>{{ work_experience.date }}</td>
+                <td>{{ work_experience.abstract }}</td>
+                <td>{{ work_experience.technicalEnvironment }}</td>
+                <td>
+                    <a href="{{ path('work_experience_show', {'id': work_experience.id}) }}">show</a>
+                    <a href="{{ path('work_experience_edit', {'id': work_experience.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('work_experience_new') }}">Create new</a>
+{% endblock %}

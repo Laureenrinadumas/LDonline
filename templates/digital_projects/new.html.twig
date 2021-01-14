@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DigitalProjects{% endblock %}
+
+{% block body %}
+    <h1>Create new DigitalProjects</h1>
+
+    {{ include('digital_projects/_form.html.twig') }}
+
+    <a href="{{ path('digital_projects_index') }}">back to list</a>
+{% endblock %}

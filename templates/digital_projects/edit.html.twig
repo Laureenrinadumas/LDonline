@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DigitalProjects{% endblock %}
+
+{% block body %}
+    <h1>Edit DigitalProjects</h1>
+
+    {{ include('digital_projects/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('digital_projects_index') }}">back to list</a>
+
+    {{ include('digital_projects/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FollowMe index{% endblock %}
+
+{% block body %}
+    <h1>FollowMe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fontawesome</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for follow_me in follow_mes %}
+            <tr>
+                <td>{{ follow_me.id }}</td>
+                <td>{{ follow_me.fontawesome }}</td>
+                <td>{{ follow_me.name }}</td>
+                <td>
+                    <a href="{{ path('follow_me_show', {'id': follow_me.id}) }}">show</a>
+                    <a href="{{ path('follow_me_edit', {'id': follow_me.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('follow_me_new') }}">Create new</a>
+{% endblock %}

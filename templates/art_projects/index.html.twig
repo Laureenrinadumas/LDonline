@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtProjects index{% endblock %}
+
+{% block body %}
+    <h1>ArtProjects index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ProjectName</th>
+                <th>Picture</th>
+                <th>Abstract</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for art_project in art_projects %}
+            <tr>
+                <td>{{ art_project.id }}</td>
+                <td>{{ art_project.projectName }}</td>
+                <td>{{ art_project.picture }}</td>
+                <td>{{ art_project.abstract }}</td>
+                <td>
+                    <a href="{{ path('art_projects_show', {'id': art_project.id}) }}">show</a>
+                    <a href="{{ path('art_projects_edit', {'id': art_project.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('art_projects_new') }}">Create new</a>
+{% endblock %}

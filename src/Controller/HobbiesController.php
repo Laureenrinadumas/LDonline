@@ -1,0 +1,94 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Hobbies;
+use App\Form\Hobbies1Type;
+use App\Repository\HobbiesRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route("/hobbies")
+ */
+class HobbiesController extends AbstractController
+{
+    /**
+     * @Route("/", name="hobbies_index", methods={"GET"})
+     */
+    public function index(HobbiesRepository $hobbiesRepository): Response
+    {
+        return $this->render('hobbies/index.html.twig', [
+            'hobbies' => $hobbiesRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="hobbies_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $hobby = new Hobbies();
+        $form = $this->createForm(Hobbies1Type::class, $hobby);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($hobby);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('hobbies_index');
+        }
+
+        return $this->render('hobbies/new.html.twig', [
+            'hobby' => $hobby,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="hobbies_show", methods={"GET"})
+     */
+    public function show(Hobbies $hobby): Response
+    {
+        return $this->render('hobbies/show.html.twig', [
+            'hobby' => $hobby,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="hobbies_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Hobbies $hobby): Response
+    {
+        $form = $this->createForm(Hobbies1Type::class, $hobby);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('hobbies_index');
+        }
+
+        return $this->render('hobbies/edit.html.twig', [
+            'hobby' => $hobby,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="hobbies_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Hobbies $hobby): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$hobby->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($hobby);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('hobbies_index');
+    }
+}
