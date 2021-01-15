@@ -106,6 +106,11 @@ class User implements UserInterface
      */
     private $hobbies;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+
     public function __construct()
     {
         $this->workExperiences = new ArrayCollection();
@@ -542,6 +547,18 @@ class User implements UserInterface
                 $hobby->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
