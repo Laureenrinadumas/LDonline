@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Hobbies;
-use App\Form\Hobbies1Type;
+use App\Form\HobbiesType;
 use App\Repository\HobbiesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class HobbiesController extends AbstractController
     public function new(Request $request): Response
     {
         $hobby = new Hobbies();
-        $form = $this->createForm(Hobbies1Type::class, $hobby);
+        $form = $this->createForm(HobbiesType::class, $hobby);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class HobbiesController extends AbstractController
      */
     public function edit(Request $request, Hobbies $hobby): Response
     {
-        $form = $this->createForm(Hobbies1Type::class, $hobby);
+        $form = $this->createForm(HobbiesType::class, $hobby);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

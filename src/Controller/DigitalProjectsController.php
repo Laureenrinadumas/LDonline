@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\DigitalProjects;
-use App\Form\DigitalProjects1Type;
+use App\Form\DigitalProjectsType;
 use App\Repository\DigitalProjectsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class DigitalProjectsController extends AbstractController
     public function new(Request $request): Response
     {
         $digitalProject = new DigitalProjects();
-        $form = $this->createForm(DigitalProjects1Type::class, $digitalProject);
+        $form = $this->createForm(DigitalProjectsType::class, $digitalProject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class DigitalProjectsController extends AbstractController
      */
     public function edit(Request $request, DigitalProjects $digitalProject): Response
     {
-        $form = $this->createForm(DigitalProjects1Type::class, $digitalProject);
+        $form = $this->createForm(DigitalProjectsType::class, $digitalProject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

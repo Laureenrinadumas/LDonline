@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\FollowMe;
-use App\Form\FollowMe1Type;
+use App\Form\FollowMeType;
 use App\Repository\FollowMeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class FollowMeController extends AbstractController
     public function new(Request $request): Response
     {
         $followMe = new FollowMe();
-        $form = $this->createForm(FollowMe1Type::class, $followMe);
+        $form = $this->createForm(FollowMeType::class, $followMe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class FollowMeController extends AbstractController
      */
     public function edit(Request $request, FollowMe $followMe): Response
     {
-        $form = $this->createForm(FollowMe1Type::class, $followMe);
+        $form = $this->createForm(FollowMeType::class, $followMe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

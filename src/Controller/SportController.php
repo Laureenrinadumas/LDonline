@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Sport;
-use App\Form\Sport1Type;
+use App\Form\SportType;
 use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class SportController extends AbstractController
     public function new(Request $request): Response
     {
         $sport = new Sport();
-        $form = $this->createForm(Sport1Type::class, $sport);
+        $form = $this->createForm(SportType::class, $sport);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class SportController extends AbstractController
      */
     public function edit(Request $request, Sport $sport): Response
     {
-        $form = $this->createForm(Sport1Type::class, $sport);
+        $form = $this->createForm(SportType::class, $sport);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

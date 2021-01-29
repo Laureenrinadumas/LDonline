@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\About;
-use App\Form\About1Type;
+use App\Form\AboutType;
 use App\Repository\AboutRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class AboutController extends AbstractController
     public function new(Request $request): Response
     {
         $about = new About();
-        $form = $this->createForm(About1Type::class, $about);
+        $form = $this->createForm(AboutType::class, $about);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class AboutController extends AbstractController
      */
     public function edit(Request $request, About $about): Response
     {
-        $form = $this->createForm(About1Type::class, $about);
+        $form = $this->createForm(AboutType::class, $about);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

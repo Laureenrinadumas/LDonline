@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Skills;
-use App\Form\Skills1Type;
+use App\Form\SkillsType;
 use App\Repository\SkillsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class SkillsController extends AbstractController
     public function new(Request $request): Response
     {
         $skill = new Skills();
-        $form = $this->createForm(Skills1Type::class, $skill);
+        $form = $this->createForm(SkillsType::class, $skill);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class SkillsController extends AbstractController
      */
     public function edit(Request $request, Skills $skill): Response
     {
-        $form = $this->createForm(Skills1Type::class, $skill);
+        $form = $this->createForm(SkillsType::class, $skill);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

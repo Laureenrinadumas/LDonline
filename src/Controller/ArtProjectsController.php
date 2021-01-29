@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ArtProjects;
-use App\Form\ArtProjects1Type;
+use App\Form\ArtProjectsType;
 use App\Repository\ArtProjectsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class ArtProjectsController extends AbstractController
     public function new(Request $request): Response
     {
         $artProject = new ArtProjects();
-        $form = $this->createForm(ArtProjects1Type::class, $artProject);
+        $form = $this->createForm(ArtProjectsType::class, $artProject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class ArtProjectsController extends AbstractController
      */
     public function edit(Request $request, ArtProjects $artProject): Response
     {
-        $form = $this->createForm(ArtProjects1Type::class, $artProject);
+        $form = $this->createForm(ArtProjectsType::class, $artProject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

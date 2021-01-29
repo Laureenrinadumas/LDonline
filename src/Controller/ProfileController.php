@@ -15,7 +15,7 @@ class ProfileController extends AbstractController
     public function index(): Response
     {
         return $this->render('index.html.twig', [
-            'website' => 'Laureen Dumas',
+            'website' => 'Hello World',
             ]);
     }
 }
