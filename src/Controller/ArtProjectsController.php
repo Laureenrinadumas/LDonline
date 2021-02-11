@@ -20,7 +20,7 @@ class ArtProjectsController extends AbstractController
      */
     public function index(ArtProjectsRepository $artProjectsRepository): Response
     {
-        return $this->render('art_projects/index.html.twig', [
+        return $this->render('art_projects/header.html.twig', [
             'art_projects' => $artProjectsRepository->findAll(),
         ]);
     }

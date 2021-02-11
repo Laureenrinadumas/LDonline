@@ -10,12 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route ("", name="profile")
+     * @Route ("", name="home")
      */
     public function index(): Response
     {
-        return $this->render('index.html.twig', [
-            'website' => 'Hello World',
-            ]);
+        return $this->render('home.html.twig');
     }
 }

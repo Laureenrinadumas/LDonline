@@ -1,6 +1,17 @@
 .typo {
-  font-family: $bodyFont;
-}
-.titleName {
   font-family: $titleFont;
+  font-size: 2em;
+}
+
+
+
+a.nav-link {
+  color: tan;
+}
+a.nav-link:hover,
+a.nav-link:focus {
+  color: #5E5E5E;
+}
+button span .navbar-toggler {
+  color: #B0413E;
 }

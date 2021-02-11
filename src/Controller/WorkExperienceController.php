@@ -20,7 +20,7 @@ class WorkExperienceController extends AbstractController
      */
     public function index(WorkExperienceRepository $workExperienceRepository): Response
     {
-        return $this->render('work_experience/index.html.twig', [
+        return $this->render('work_experience/header.html.twig', [
             'work_experiences' => $workExperienceRepository->findAll(),
         ]);
     }

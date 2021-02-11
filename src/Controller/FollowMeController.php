@@ -20,7 +20,7 @@ class FollowMeController extends AbstractController
      */
     public function index(FollowMeRepository $followMeRepository): Response
     {
-        return $this->render('follow_me/index.html.twig', [
+        return $this->render('follow_me/header.html.twig', [
             'follow_mes' => $followMeRepository->findAll(),
         ]);
     }

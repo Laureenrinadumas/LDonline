@@ -20,7 +20,7 @@ class DigitalProjectsController extends AbstractController
      */
     public function index(DigitalProjectsRepository $digitalProjectsRepository): Response
     {
-        return $this->render('digital_projects/index.html.twig', [
+        return $this->render('digital_projects/header.html.twig', [
             'digital_projects' => $digitalProjectsRepository->findAll(),
         ]);
     }

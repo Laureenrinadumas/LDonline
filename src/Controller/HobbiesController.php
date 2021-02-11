@@ -20,7 +20,7 @@ class HobbiesController extends AbstractController
      */
     public function index(HobbiesRepository $hobbiesRepository): Response
     {
-        return $this->render('hobbies/index.html.twig', [
+        return $this->render('hobbies/header.html.twig', [
             'hobbies' => $hobbiesRepository->findAll(),
         ]);
     }

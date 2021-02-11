@@ -20,7 +20,7 @@ class SkillsController extends AbstractController
      */
     public function index(SkillsRepository $skillsRepository): Response
     {
-        return $this->render('skills/index.html.twig', [
+        return $this->render('skills/header.html.twig', [
             'skills' => $skillsRepository->findAll(),
         ]);
     }

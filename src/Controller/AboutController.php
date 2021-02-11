@@ -20,7 +20,7 @@ class AboutController extends AbstractController
      */
     public function index(AboutRepository $aboutRepository): Response
     {
-        return $this->render('about/index.html.twig', [
+        return $this->render('about/header.html.twig', [
             'abouts' => $aboutRepository->findAll(),
         ]);
     }

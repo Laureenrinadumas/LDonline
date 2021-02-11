@@ -20,7 +20,7 @@ class LanguagesController extends AbstractController
      */
     public function index(LanguagesRepository $languagesRepository): Response
     {
-        return $this->render('languages/index.html.twig', [
+        return $this->render('languages/header.html.twig', [
             'languages' => $languagesRepository->findAll(),
         ]);
     }
